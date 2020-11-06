@@ -14,17 +14,7 @@ export class ApiService {
   constructor(private httpClient: HttpClient) {
   }
 
-  public getFirstLevelItems() {
-    return new Promise((resolve) => {
-      const firstItems: Map<number, NavigatorLevel> = new Map();
-      return this.fetchData().subscribe((data: Map<number, NavigatorLevel>) => {
-        this._firstLevelIndexes.forEach((index: number) => firstItems.set(index, data[index]));
-        resolve(firstItems);
-      });
-    });
-  }
-
-  public getRowChildren(childrenIds: number[]) {
+  public getRowChildren(childrenIds: number[] = this._firstLevelIndexes) {
     return new Promise((resolve) => {
       const children: Map<number, NavigatorLevel> = new Map();
       return this.fetchData().subscribe((data: Map<number, NavigatorLevel>) => {

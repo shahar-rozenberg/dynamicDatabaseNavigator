@@ -37,9 +37,7 @@ export class UiTreeItemComponent implements OnInit {
   ngOnInit() {
   }
 
-  public openRow(event): void {
-    event.stopPropagation();
-
+  public openRow(): void {
     if (!this._isExpand) {
       if (this.permissionsService.isUserAuthorized(this.itemId)) {
         this._isExpand = true;
