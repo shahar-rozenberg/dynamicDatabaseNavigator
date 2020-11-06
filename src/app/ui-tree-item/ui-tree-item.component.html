@@ -1,0 +1,12 @@
+<div class="row" (click)="openRow($event)">
+  <i class="arrow" [ngClass]="isExpand? 'down' : 'right'"></i>
+  <img [src]="getIconSrc()">
+  <span>{{item.name}}</span>
+</div>
+<ul *ngIf="treeItems.size && isExpand">
+  <li *ngFor="let currItem of treeItems | keyvalue">
+    <!--<app-ui-tree-item [value]="item.value.name" [type]="item.value.type" [itemId]="item.key">-->
+    <app-ui-tree-item [item]="currItem.value" [itemId]="currItem.key">
+    </app-ui-tree-item>
+  </li>
+</ul>

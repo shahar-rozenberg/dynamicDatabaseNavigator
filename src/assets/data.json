@@ -1,0 +1,72 @@
+{
+  "1": {
+    "name": "postgrSQL (Generic)",
+    "type": "connection",
+    "children": [4]
+  },
+  "2": {
+    "name": "postgrSQL - test",
+    "type": "connection",
+    "children": [5]
+  },
+  "3": {
+    "name": "postgrSQL (Generic)",
+    "type": "connection",
+    "children": [6, 7, 8]
+  },
+  "4": {
+    "name": "playground",
+    "type": "db",
+    "children": [9]
+  },
+  "5": {
+    "name": "postgis",
+    "type": "db",
+    "children": [10, 11]
+  },
+  "6": {
+    "name": "playground",
+    "type": "db",
+    "children": []
+  },
+  "7": {
+    "name": "postgis",
+    "type": "db",
+    "children": []
+  },
+  "8": {
+    "name": "postgres",
+    "type": "db",
+    "children": []
+  },
+  "9": {
+    "name": "esprinter_data",
+    "type": "schema",
+    "children": []
+  },
+  "10": {
+    "name": "tiger",
+    "type": "schema",
+    "children": []
+  },
+  "11": {
+    "name": "topology",
+    "type": "schema",
+    "children": [12]
+  },
+  "12": {
+    "name": "layer",
+    "type": "table",
+    "children": [13, 14]
+  },
+  "13": {
+    "name": "first column",
+    "type": "column",
+    "children": []
+  },
+  "14": {
+    "name": "second column",
+    "type": "column",
+    "children": []
+  }
+}

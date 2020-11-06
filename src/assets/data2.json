@@ -1,0 +1,88 @@
+[
+  {
+    "name": "postgrSQL (Generic)",
+    "iconSrc": "assets/connection.png",
+    "children": [
+      {
+        "name": "playground",
+        "iconSrc": "assets/db.png",
+        "children": []
+      },
+      {
+        "name": "postgis",
+        "iconSrc": "assets/db.png",
+        "children": []
+      }
+    ]
+  },
+  {
+    "name": "postgrSQL - indet",
+    "iconSrc": "assets/connection.png",
+    "children": []
+  },
+  {
+    "name": "postgrSQL - test",
+    "iconSrc": "assets/connection.png",
+    "children": [
+      {
+        "name": "playground",
+        "iconSrc": "assets/db.png",
+        "children": []
+      },
+      {
+        "name": "postgis",
+        "iconSrc": "assets/db.png",
+        "children": []
+      },
+      {
+        "name": "postgres",
+        "iconSrc": "assets/db.png",
+        "children": [
+          {
+            "name": "esprinter_data",
+            "iconSrc": "assets/schema.png",
+            "children": []
+          },
+          {
+            "name": "tiger",
+            "iconSrc": "assets/schema.png",
+            "children": []
+          },
+          {
+            "name": "topology",
+            "iconSrc": "assets/schema.png",
+            "children": [
+              {
+                "name": "layer",
+                "iconSrc": "assets/table.png",
+                "children": [
+                  {
+                    "name": "first column",
+                    "iconSrc": "assets/column.png",
+                    "children": []
+                  },
+                  {
+                    "name": "second column",
+                    "iconSrc": "assets/column.png",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "name": "newTable",
+                "iconSrc": "assets/table.png",
+                "children": []
+              },
+              {
+                "name": "topology",
+                "iconSrc": "assets/table.png",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
+

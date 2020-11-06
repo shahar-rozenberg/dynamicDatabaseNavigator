@@ -1,0 +1,7 @@
+<div class="item-container">
+  <!--<app-ui-tree-item *ngFor="let treeItem of data | keyvalue; let i = index"-->
+  <!--[value]="treeItem.value.name" [type]="treeItem.value.iconSrc" [itemId]="treeItem.key">-->
+  <app-ui-tree-item *ngFor="let treeItem of data | keyvalue;"
+                    [item]="treeItem.value" [itemId]="treeItem.key">
+  </app-ui-tree-item>
+</div>
