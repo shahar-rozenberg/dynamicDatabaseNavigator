@@ -1,11 +1,12 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PermissionsService {
 
-  constructor() { }
+  constructor() {
+  }
 
   public isUserAuthorized(itemId: number) {
     const randomBoolean: boolean = Math.random() * itemId >= 0.8;

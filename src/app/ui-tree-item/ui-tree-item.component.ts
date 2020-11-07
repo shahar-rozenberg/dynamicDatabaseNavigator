@@ -1,29 +1,31 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {NavigatorLevel} from '../models/navigator-level';
 import {ApiService} from '../services/api.service';
 import {PermissionsService} from '../services/permissions.service';
 import Swal from 'sweetalert2';
+import {NavigatorLevelService} from '../services/navigator-level.service';
 
 @Component({
   selector: 'app-ui-tree-item',
   templateUrl: './ui-tree-item.component.html',
   styleUrls: ['./ui-tree-item.component.less']
 })
-export class UiTreeItemComponent implements OnInit {
+export class UiTreeItemComponent {
   @Input() itemId: number;
   @Input() item: NavigatorLevel;
-  private _treeItems: Map<number, NavigatorLevel> = new Map();
+  private _nextLevelItems: Map<number, NavigatorLevel> = new Map();
   private _isExpand: boolean = false;
 
-  constructor(private _apiService: ApiService, private permissionsService: PermissionsService) {
+  constructor(private _apiService: ApiService, private permissionsService: PermissionsService,
+              private _navigatorLevelService: NavigatorLevelService) {
   }
 
-  get treeItems(): Map<number, NavigatorLevel> {
-    return this._treeItems;
+  get nextLevelItems(): Map<number, NavigatorLevel> {
+    return this._nextLevelItems;
   }
 
-  set treeItems(value: Map<number, NavigatorLevel>) {
-    this._treeItems = value;
+  set nextLevelItems(value: Map<number, NavigatorLevel>) {
+    this._nextLevelItems = value;
   }
 
   get isExpand(): boolean {
@@ -34,26 +36,34 @@ export class UiTreeItemComponent implements OnInit {
     this._isExpand = value;
   }
 
-  ngOnInit() {
-  }
-
-  public openRow(): void {
+  public itemClicked(): void {
     if (!this._isExpand) {
-      if (this.permissionsService.isUserAuthorized(this.itemId)) {
-        this._isExpand = true;
-        this._apiService.getRowChildren(this.item.children).then((children: Map<number, NavigatorLevel>) => {
-          this._treeItems = children;
-        });
-      } else {
-        this.openForbiddenPopup();
-      }
+      this.openRow();
     } else {
-      this.isExpand = false;
+      this._isExpand = false;
     }
   }
 
+  private openRow(): void {
+    if (this.permissionsService.isUserAuthorized(this.itemId)) {
+      this._isExpand = true;
+      if (!this._nextLevelItems.size) {
+        this.selectNextLevel();
+      }
+    } else {
+      this.openForbiddenPopup();
+    }
+  }
+
+
+  private selectNextLevel(): void {
+    this._apiService.getRowChildren(this.item.children).then((children: Map<number, NavigatorLevel>) => {
+      this._nextLevelItems = children;
+    });
+  }
+
   public getIconSrc(): string {
-    return this._apiService.getIconSrcByType(this.item.type);
+    return this._navigatorLevelService.getIconSrcByType(this.item.type);
   }
 
   private openForbiddenPopup(): void {

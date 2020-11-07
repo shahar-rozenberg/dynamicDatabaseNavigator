@@ -1,12 +1,12 @@
-<div class="row" (click)="item.children.length ? openRow() : false">
+<div class="row" (click)="item.children.length ? itemClicked() : false">
   <i *ngIf="item.children.length" [ngClass]="isExpand ? 'arrow-down' : 'arrow-right'"></i>
   <p class="item-description">
     <img [src]="getIconSrc()">
     <span>{{item.name}}</span>
   </p>
 </div>
-<ul *ngIf="treeItems.size && isExpand">
-  <li *ngFor="let currItem of treeItems | keyvalue">
+<ul *ngIf="nextLevelItems.size && isExpand">
+  <li *ngFor="let currItem of nextLevelItems | keyvalue">
     <app-ui-tree-item [item]="currItem.value" [itemId]="currItem.key">
     </app-ui-tree-item>
   </li>
