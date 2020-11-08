@@ -40,6 +40,10 @@ export class UiTreeItemComponent {
     this._isExpand ? this._isExpand = false : this.openRow();
   }
 
+  public getIconSrc(): string {
+    return this._navigatorLevelService.getIconSrcByType(this.item.type);
+  }
+
   private openRow(): void {
     if (this.permissionsService.isUserAuthorized(this.itemId)) {
       this._isExpand = true;
@@ -51,15 +55,10 @@ export class UiTreeItemComponent {
     }
   }
 
-
   private selectNextLevel(): void {
-    this._apiService.getRowChildren(this.item.children).then((children: Map<number, NavigatorLevel>) => {
+    this._apiService.getTreeItemsByIds(this.item.children).then((children: Map<number, NavigatorLevel>) => {
       this._nextLevelItems = children;
     });
-  }
-
-  public getIconSrc(): string {
-    return this._navigatorLevelService.getIconSrcByType(this.item.type);
   }
 
   private openForbiddenPopup(): void {

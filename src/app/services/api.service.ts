@@ -8,18 +8,18 @@ import {NavigatorLevel} from '../models/navigator-level';
 export class ApiService {
   private _url: string = 'assets/data.json';
   private _dataCache;
-  private readonly _firstLevelIndexes: number[] = [1, 2, 3];
+  private readonly FIRST_LEVEL_INDEXES: number[] = [1, 2, 3];
 
   constructor(private httpClient: HttpClient) {
   }
 
-  public async getRowChildren(childrenIds: number[] = this._firstLevelIndexes) {
-    const children: Map<number, NavigatorLevel> = new Map();
+  public async getTreeItemsByIds(itemsIds: number[] = this.FIRST_LEVEL_INDEXES) {
+    const selectedItems: Map<number, NavigatorLevel> = new Map();
     if (!this._dataCache) {
       this._dataCache = await this.fetchData().toPromise();
     }
-    childrenIds.forEach((childId: number) => children.set(childId, this._dataCache[childId]));
-    return children;
+    itemsIds.forEach((itemId: number) => selectedItems.set(itemId, this._dataCache[itemId]));
+    return selectedItems;
   }
 
   private fetchData() {

@@ -22,7 +22,7 @@ export class UiTreeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._apiService.getRowChildren().then((connections: Map<number, NavigatorLevel>) => {
+    this._apiService.getTreeItemsByIds().then((connections: Map<number, NavigatorLevel>) => {
       this._firstLevelData = connections;
     });
   }
