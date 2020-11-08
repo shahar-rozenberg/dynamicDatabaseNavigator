@@ -37,11 +37,7 @@ export class UiTreeItemComponent {
   }
 
   public itemClicked(): void {
-    if (!this._isExpand) {
-      this.openRow();
-    } else {
-      this._isExpand = false;
-    }
+    this._isExpand ? this._isExpand = false : this.openRow();
   }
 
   private openRow(): void {

@@ -9,6 +9,6 @@ export class NavigatorLevelService {
   constructor() { }
 
   public getIconSrcByType(type: string): string {
-    return environment.TYPE_TO_SRC_MAP[type];
+    return environment.TYPE_TO_SRC_MAP[type] || environment.TYPE_TO_SRC_MAP.default;
   }
 }
